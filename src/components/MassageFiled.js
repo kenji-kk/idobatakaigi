@@ -1,9 +1,12 @@
 import React,{useState} from 'react';
 import { TextField } from '@material-ui/core';
 
+import { pushMessage } from '../firebase';
+
 const MassageField = ({name, setText, text}) => {
     const [isComposed, setIsComposed] = useState(false);
-    return <TextField 
+    return (
+    <TextField 
     fullWidth={true}
     onChange={(e) => {setText(e.target.value);
     }}
@@ -11,9 +14,10 @@ const MassageField = ({name, setText, text}) => {
         if (isComposed) return;
 
         const text = e.target.value;
-        if (e.key === '') return;
+        if (text === '') return;
 
         if (e.key === 'Enter'){
+          pushMessage({name: 'はむさん', text});
           setText('')
           e.preventDefault();
         }
@@ -21,7 +25,7 @@ const MassageField = ({name, setText, text}) => {
       onCompositionStart={() => setIsComposed(true)}
       onCompositionEnd={() => setIsComposed(false)}
       value={text}
-    />;
+    />)
 };
 
 export default MassageField;
