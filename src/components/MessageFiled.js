@@ -3,7 +3,7 @@ import { TextField } from '@material-ui/core';
 
 import { pushMessage } from '../firebase';
 
-const MassageField = ({name, setText, text}) => {
+const MessageField = ({name, setText, text}) => {
     const [isComposed, setIsComposed] = useState(false);
     return (
     <TextField 
@@ -28,4 +28,4 @@ const MassageField = ({name, setText, text}) => {
     />)
 };
 
-export default MassageField;
+export default MessageField;

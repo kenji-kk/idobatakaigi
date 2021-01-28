@@ -3,7 +3,8 @@ import { Avatar, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {gravatarPath} from '../gravatar';
-import MassageField from './MassageFiled'
+import MessageField from './MessageFiled'
+import MessageSubmitButton from './MessageSubmitButton';
 
 const useStyles = makeStyles({
     root: {
@@ -23,9 +24,11 @@ const MessageInputField = ({name}) => {
                 <Avatar src={avatarPath}/>
             </Grid>
             <Grid item xs={10}>
-                <MassageField name={name} setText={setText} text={text}/>    
+                <MessageField name={name} setText={setText} text={text}/>    
             </Grid>
-            <Grid item xs={1}>ボタン</Grid>
+            <Grid item xs={1}>
+                <MessageSubmitButton name={name} text={text}/>
+            </Grid>
         </Grid>
     </div>)
 }
